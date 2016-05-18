@@ -35,7 +35,21 @@ protected:
     z3::context sat_context; // a component of z3 solver to define expressions
     z3::expr one, zero;      // const one(1) and zero(0)
     int n, m, D;             // the maze size = n * m, the number of pairs = D
+    char GetValue(z3::model &sat_model, const z3::expr &t);
     virtual message SolveSat(int n_, int m_, int D_, std::vector<std::vector<int> > block, int aug) = 0;
+    virtual void getTerm(z3::expr &term, const z3::expr_vector &method, int d, int x, int y);
+    virtual void AddSatTerms(z3::expr_vector &method);
+    virtual void EstablishModels(z3::expr &total_pairs,
+                         z3::expr &total_length,
+                         const z3::expr_vector &method,
+                         z3::optimize &sat_solver,
+                         std::vector<std::vector<int> > block, 
+                         std::vector<std::pair<int, int> > point[], 
+                         int aug);
+    virtual void FindPath(message &results,
+                  z3::model &sat_model,
+                  const z3::expr_vector &method,
+                  std::vector<std::pair<int, int> > point[]);
 public:
     RoutingSatAlgo() : sat_context(), one(sat_context.int_val(1)), zero(sat_context.int_val(0)) {}
     message Solve(int n_, int m_, int D_, std::vector<std::vector<int> > block){
@@ -59,7 +73,6 @@ protected:
                          std::vector<std::vector<int> > block, 
                          std::vector<std::pair<int, int> > point[], 
                          int aug);
-    char GetValue(z3::model &sat_model, const z3::expr &t);
     void FindPath(message &results,
                   z3::model &sat_model,
                   const z3::expr_vector &method,
@@ -72,7 +85,7 @@ public:
     // A concrete implement of the sat model algorithm
     message Solve(int n_, int m_, int D_, std::vector<std::vector<int> > block);
 };
-
+/*
 class RoutingSatAlgoFlowPrune : public RoutingSatAlgo{
     int layer_cnt;
 private:
@@ -85,7 +98,9 @@ private:
 public:
     RoutingSatAlgoFlowPrune() : RoutingSatAlgo() {}
     // A concrete implement of the sat model algorithm
-    message Solve(int n_, int m_, int D_, std::vector<std::vector<int> > block);
+    message Solve(int n_, int m_, int D_, std::vector<std::vector<int> > block){
+        return SolveSat(n_, m_, D_, block, 0);
+    }
 };
 
 class RoutingSatAlgoPointPrune : public RoutingSatAlgo{
@@ -99,8 +114,10 @@ private:
 public:
     RoutingSatAlgoPointPrune() : RoutingSatAlgo() {}
     // A concrete implement of the sat model algorithm
-    message Solve(int n_, int m_, int D_, std::vector<std::vector<int> > block);
+    message Solve(int n_, int m_, int D_, std::vector<std::vector<int> > block){
+        return SolveSat(n_, m_, D_, block, 0);
+    }
 };
-
+*/
 
 #endif //ROUTINGALGO_H_

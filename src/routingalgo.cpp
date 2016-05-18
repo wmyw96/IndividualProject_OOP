@@ -10,6 +10,12 @@ const int fx[4] = {0, 0, 1, -1},
 const int mx[6] = {0, 0, 0, 1, 1, 2},
 		  my[6] = {1, 2, 3, 2, 3, 3};
 
+char RoutingSatAlgo::GetValue(model &sat_model, const expr &t){
+    std::stringstream st;
+    st << sat_model.eval(t);
+    return st.str()[0];
+}
+
 int RoutingSatAlgoFlow::idx(int x, int y, int k){
     if (k <= 1){
         if (k == 1) y--;
@@ -111,12 +117,6 @@ void RoutingSatAlgoFlow::EstablishModels(expr &total_pairs,
                 sat_solver.add(!t_or || (t_sum == 2));
             }
         }
-}
-
-char RoutingSatAlgoFlow::GetValue(model &sat_model, const expr &t){
-    std::stringstream st;
-    st << sat_model.eval(t);
-    return st.str()[0];
 }
 
 void RoutingSatAlgoFlow::FindPath(message &results,
@@ -233,7 +233,7 @@ message RoutingSatAlgoFlow::SolveSat(int n_, int m_, int D_, std::vector<std::ve
 message RoutingSatAlgoFlow::Solve(int n_, int m_, int D_, std::vector<std::vector<int> > block){
 	return SolveSat(n_, m_, D_, block, 0);
 }
-
+/*
 // RoutingSatAlgoFlowPrune
 int RoutingSatAlgoFlowPrune::idx(int x, int y, int k){
     if (k <= 1){
@@ -487,10 +487,6 @@ message RoutingSatAlgoFlowPrune::SolveSat(int n_, int m_, int D_, std::vector<st
     return results;
 }
 
-message RoutingSatAlgoFlowPrune::Solve(int n_, int m_, int D_, std::vector<std::vector<int> > block){
-    return SolveSat(n_, m_, D_, block, 0);
-}
-
 // RoutingSatAlgoPointPrune
 int RoutingSatAlgoPointPrune::idx(int x, int y){
     return (x - 1) * m + y;
@@ -690,7 +686,4 @@ message RoutingSatAlgoPointPrune::SolveSat(int n_, int m_, int D_, std::vector<s
     }
     return results;
 }
-
-message RoutingSatAlgoPointPrune::Solve(int n_, int m_, int D_, std::vector<std::vector<int> > block){
-    return SolveSat(n_, m_, D_, block, 0);
-}
+*/
