@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-std::vector<std::string> RoutingSolver::load(const std::string& file) const{
+std::vector<std::string> RoutingSolver::load(const std::string& file){
 	std::ifstream in(file.c_str());
 	std::vector<std::string> ret;
 	ret.clear();
@@ -18,11 +18,11 @@ std::vector<std::string> RoutingSolver::load(const std::string& file) const{
     return ret;
 }
 
-void RoutingSolver::solver(const std::string& file) const{
+message RoutingSolver::solver(const std::string& file){
 	std::vector<std::string> board = load(file);
 	// error
 	if (board.size() == 1 && board[0] == "ERROR")
-		return;
+		return message();
 
 	int n = board.size();
 	int m = board[0].size();
@@ -30,6 +30,7 @@ void RoutingSolver::solver(const std::string& file) const{
 
 	std::vector<std::vector<int> > block;
 	block.clear();
+	
 	block.resize(n + 2);
     for (int i = 0; i <= n + 1; ++i){
 		block[i].resize(m + 2);
@@ -39,7 +40,7 @@ void RoutingSolver::solver(const std::string& file) const{
 	for (int i = 1; i <= n; ++i)
 		for (int j = 1; j <= m; ++j){
 			char c = board[i - 1][j - 1];
-			if (c == '*')
+			if (c == '#')
 				block[i][j] = -1;
 			else{
 				block[i][j] = 0;
@@ -48,6 +49,7 @@ void RoutingSolver::solver(const std::string& file) const{
 				d = std::max(d, c - '0');
 			}
 		}
-
-    solve(n, m, d, block);
+	
+    message t = solve(n, m, d, block);
+    return t;
 }

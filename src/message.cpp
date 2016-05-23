@@ -16,7 +16,7 @@ message::message(int d, int n, int m, std::vector<std::vector<int> > block) : d_
     ok_ = 0;
 }
 
-void message::display(){
+void message::display() const{
 	for (int i = 1; i <= n_; ++i){
 		for (int j = 1; j <= m_; ++j)
 			if (board[i][j] > 0)
