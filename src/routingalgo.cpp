@@ -63,6 +63,7 @@ message RoutingSatAlgo::GetAns(const expr &total_pairs,
                 results.set_totpair(d);
             else return SolveSat(n, m, D, block, 1);
         }
+        else results.set_totpair(D);
         
         model sat_model = sat_solver.get_model();
 

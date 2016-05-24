@@ -17,6 +17,10 @@ message::message(int d, int n, int m, std::vector<std::vector<int> > block) : d_
 }
 
 void message::display() const{
+    if (totpair_ < d_)
+        std::cout << "Maximize the total connected pairs: " << totpair_ << " pairs" << std::endl;
+    else
+        std::cout << "Minimize the total length: " << totlength_ << " grieds" << std::endl;
 	for (int i = 1; i <= n_; ++i){
 		for (int j = 1; j <= m_; ++j)
 			if (board[i][j] > 0)

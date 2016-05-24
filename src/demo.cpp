@@ -1,7 +1,6 @@
 #include "demo.h"
 #include <stdio.h>
 #include <fstream>
-#include <conio.h>
 
 using namespace std;
 
@@ -106,7 +105,7 @@ void StateMain::handle(Demo &game){
 	printf("+\n");
 
 	char op;
-    op = getch();
+    scanf(" %c", &op);
 	if (op == 'i'){
 		game.nx = 1;
 		game.ny = 1;
@@ -141,9 +140,9 @@ void StateMain::handle(Demo &game){
 		 				
 		 				game.ans = game.solver.solver(game.filename);
 
-		 				printf("Press any key to continue\n");
+		 				printf("Press 'Enter' key to continue\n");
 		 				char ch; scanf("%c", &ch);
-
+		 				scanf("%c", &ch);
 		 				game.state = new StateDisplay();
 		 			}
 		 		}
@@ -172,7 +171,7 @@ void StateEdit::handle(Demo &game){
 	printf("|                                                       |\n");
 	printf("|     The current thing in the current position is      |\n");
 	printf("|                          [%c]                          |\n", printPos(game.board[game.nx][game.ny]));
-	
+	game.filename = "";
 	printf("|  ");
 	for (int j = 1; j <= 51; ++j)
 		printf(" ");

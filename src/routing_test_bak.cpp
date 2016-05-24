@@ -4,6 +4,8 @@
 #include "message.h"
 #include "checker.h"
 
+//using namespace std;
+
 int main(){
     /*RoutingSatAlgoFlow algo1;
     RoutingSolver s1(&algo1);
@@ -15,5 +17,4 @@ int main(){
     ans2.display();
     AnswerChecker checker;
     CheckerMessage m = checker.legal_step_check(block, ans2);
-    std::cout << m.res << std::endl;
 }
