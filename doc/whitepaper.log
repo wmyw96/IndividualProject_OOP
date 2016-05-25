@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.11.16)  24 MAY 2016 15:30
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.11.16)  25 MAY 2016 18:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1692,45 +1692,178 @@ File: example.png Graphic file (type QTm)
  <use  "example.png" > [2]
 File: example2.png Graphic file (type QTm)
  <use  "example2.png" >
-Underfull \hbox (badness 10000) in paragraph at lines 261--262
+Underfull \hbox (badness 1596) in paragraph at lines 262--263
+[]\EU1/lmr/m/n/10 the core part, which consists of the whole al-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 262--263
+\EU1/lmr/m/n/10 gorithm(routingalgo.h, routingalgo.cpp, rout-
+ []
+
+
+Underfull \hbox (badness 1389) in paragraph at lines 264--265
+\EU1/lmr/m/n/10 uate the efficiency and correctness of the algo-
+ []
+
+File: ir1.png Graphic file (type QTm)
+<use  "ir1.png" > [3]
+File: UMLRoutingSolver.png Graphic file (type QTm)
+ <use  "UMLRoutingSolver.png" >
+File: UMLRoutingAlgo.png Graphic file (type QTm)
+
+<use  "UMLRoutingAlgo.png" >
+File: UMLmessage.png Graphic file (type QTm)
+ <use  "UMLmessage.png" > [4]
+File: UMLCheckerMessage.png Graphic file (type QTm)
+
+<use  "UMLCheckerMessage.png" >
+File: UMLAnswerChecker.png Graphic file (type QTm)
+ <use  "UMLAnswerChecker.png" >
+Underfull \vbox (badness 1242) has occurred while \output is active []
+
+
+Underfull \hbox (badness 4205) in paragraph at lines 422--423
+[]\EU1/lmr/bx/n/10 DataGenerator \EU1/lmr/m/n/10 and \EU1/lmr/bx/n/10 RandomDat
+aGenerator\EU1/lmr/m/n/10 :
+ []
+
+File: UMLDataGenerator.png Graphic file (type QTm)
+<use  "UMLDataGenerator.png" >
+Underfull \hbox (badness 1215) in paragraph at lines 438--439
+[]\EU1/lmr/m/n/10 By class \EU1/lmr/bx/n/10 Time\EU1/lmr/m/n/10 , we can add a 
+new time span
+ []
+
+
+Underfull \hbox (badness 1484) in paragraph at lines 438--439
+\EU1/lmr/m/n/10 ($[]$) and get the summary data($[]$,
+ []
+
+File: UMLTime.png Graphic file (type QTm)
+<use  "UMLTime.png" > [5]
+File: UMLEvaluation.png Graphic file (type QTm)
+ <use  "UMLEvaluation.png" >
+File: UMLState.png Graphic file (type QTm)
+ <use  "UMLState.png" >
+Underfull \vbox (badness 4569) has occurred while \output is active []
+
+File: UMLDemo.png Graphic file (type QTm)
+
+<use  "UMLDemo.png" > [6]
+Underfull \hbox (badness 6110) in paragraph at lines 517--518
+\EU1/lmr/m/n/10 and put the map($[]$) and the
+ []
+
+*************************************************
+* fontspec warning: "script-not-exist"
+* 
+* Font 'FandolFang-Regular' does not contain script 'CJK'.
+*************************************************
+\g__fontspec_family_FandolFang-Regular_int=\count193
+LaTeX Font Info:    Try loading font information for EU1+lmtt on input line 539
+.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/euenc/eu1lmtt.fd
+File: eu1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'FandolFang-Regular(0)' created for font 'FandolFang-Regular'
+. with options [Script={CJK},Extension={.otf}].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. <->"[FandolFang-Regular.otf]/OT:"
+. 
+. * 'small caps' with NFSS spec.:
+. 
+. and font adjustment code:
+. 
+.................................................
+File: GUI-entrance.png Graphic file (type QTm)
+
+<use  "GUI-entrance.png" >
+Overfull \hbox (5.14235pt too wide) in paragraph at lines 550--551
+ [] 
+ []
+
+File: Gui-main.png Graphic file (type QTm)
+<use  "Gui-main.png" >
+Overfull \hbox (5.14235pt too wide) in paragraph at lines 561--562
+ [] 
+ []
+
+[7]
+File: GUI-edit.png Graphic file (type QTm)
+ <use  "GUI-edit.png" >
+Overfull \hbox (5.14235pt too wide) in paragraph at lines 572--573
+ [] 
+ []
+
+File: GUI-save.png Graphic file (type QTm)
+<use  "GUI-save.png" >
+Overfull \hbox (5.14235pt too wide) in paragraph at lines 583--584
+ [] 
+ []
+
+File: GUI-execute.png Graphic file (type QTm)
+<use  "GUI-execute.png" >
+Overfull \hbox (5.14235pt too wide) in paragraph at lines 594--595
+ [] 
+ []
+
+File: GUI-display.png Graphic file (type QTm)
+<use  "GUI-display.png" >
+Overfull \hbox (5.14235pt too wide) in paragraph at lines 605--606
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 614--615
 []\EU1/lmr/m/n/10 Oliver Keszocze, Robert Wille, Krishnendu
  []
 
 
-Underfull \hbox (badness 1117) in paragraph at lines 261--262
+Underfull \hbox (badness 1117) in paragraph at lines 614--615
 \EU1/lmr/m/n/10 Chakrabarty, Rolf Drechsler. A General and Ex-
  []
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 261--262
+Underfull \hbox (badness 1270) in paragraph at lines 614--615
 \EU1/lmr/m/n/10 act Routing Methodology for Digital Microfluidic
  []
 
 
-Underfull \hbox (badness 4144) in paragraph at lines 263--264
+Underfull \hbox (badness 4144) in paragraph at lines 616--617
 \EU1/lmr/m/n/10 efficient SMT solver. In Tools and Algorithms
  []
 
 
-Underfull \hbox (badness 1237) in paragraph at lines 263--264
+Underfull \hbox (badness 1237) in paragraph at lines 616--617
 \EU1/lmr/m/n/10 for the Construction and Analy- sis of Systems,
  []
 
-[3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 267.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 267.
+[8]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 620.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 620.
  (./whitepaper.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 267.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 267.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 267.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 620.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 620.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 620.
  ) 
 Here is how much of TeX's memory you used:
- 36960 strings out of 493706
- 721227 string characters out of 6145768
- 851000 words of memory out of 5000000
- 39850 multiletter control sequences out of 15000+600000
- 16120 words of font info for 78 fonts, out of 8000000 for 9000
+ 37064 strings out of 493706
+ 723117 string characters out of 6145768
+ 853398 words of memory out of 5000000
+ 39929 multiletter control sequences out of 15000+600000
+ 16136 words of font info for 80 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 55i,8n,71p,10432b,488s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,8n,71p,10432b,595s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on whitepaper.pdf (3 pages).
+Output written on whitepaper.pdf (8 pages).
