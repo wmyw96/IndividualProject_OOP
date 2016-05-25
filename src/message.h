@@ -12,7 +12,7 @@ public:
 	mutable std::vector<std::vector<int> > board;
 	mutable std::vector<std::vector<std::pair<int, int> > > route;
 	message(int d, int n, int m, std::vector<std::vector<int> > block);
-	message() : n_(0), m_(0), d_(0) {}
+	message() : n_(0), m_(0), d_(0) {totpair_ = totlength_ = ok_ = 0;}
 	message(const message &b){
 		n_ = b.n_;
 		m_ = b.m_;
@@ -57,6 +57,8 @@ public:
 	}
 	void display() const;
     message& operator = (const message &b){
+    	if (this == &b)
+    		return *this;
 		n_ = b.n_;
 		m_ = b.m_;
 		d_ = b.d_;

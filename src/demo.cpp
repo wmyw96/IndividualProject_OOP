@@ -9,6 +9,7 @@ using namespace std;
 #define RIGHT_W 5
 #define RIGHT_H 5
 
+// this function is to print the message at the head of the interface
 void printText(string str, int width){
 	printf("+");
 	for (int i = 1; i <= width + 4; ++i)
@@ -43,7 +44,8 @@ void StateEntrance::handle(Demo &game){
 	printText(s1, 50);
 	printf("Enter the width and the height of the board (e.g. '6 8')\n");
 	printf("If you want to exit the demo, enter '0 0'\n");
-
+    
+    // enter the size
 	int x = 0, y = 0;
 	scanf("%d %d", &x, &y);
 	if (x == 0 || y == 0){
@@ -61,13 +63,16 @@ void StateEntrance::handle(Demo &game){
 
 void StateMain::handle(Demo &game){
 	system("clear");
+    
+    // print the info
 	string s1 = "Press 'i' to edit the map\n";
 	if (game.error != "") s1 = game.error + s1, game.error = "";
 	string s2 = "Press 's' to save the map\n";
 	string s3 = "Press 'e' to calulate the map\n";
 	string s4 = "Press 'x' to get to the entrance\n";
 	printText(s1 + s2 + s3 + s4, 51);
-	
+    
+	// print the map now
 	printf("|  ");
 	for (int j = 1; j <= 51; ++j)
 		printf(" ");
@@ -103,25 +108,31 @@ void StateMain::handle(Demo &game){
 	for (int i = 1; i <= 51 + 4; ++i)
 		printf("=");
 	printf("+\n");
-
+    
+    // for different operations
 	char op;
     scanf(" %c", &op);
 	if (op == 'i'){
+        // edit the map
 		game.nx = 1;
 		game.ny = 1;
 		game.state = new StateEdit();
 	}
 	else 
 		if (op == 's'){
+            // save the map
 			game.state = new StateSave();
 		}
 		else 
 			if (op == 'e'){
+                // execute the algorithm
+                
+                // check if the file is saved
 				if (game.filename == ""){
 					game.error = "ERROR: Please save the file first\n";
 				}
 		 		else{
-		 			// a simple check
+		 			// a simple check (every number appears twice in the map)
 		 			int ok = 1;
 		 			for (int t = 1; t <= 9; ++t){
 		 				int cnt = 0;
@@ -131,7 +142,7 @@ void StateMain::handle(Demo &game){
 		 				if (cnt != 0 && cnt != 2)
 		 					ok = 0;
 		 			}
-
+                    
 		 			if (ok == 0){
 		 				game.filename = "";
 		 				game.error = "ERROR: Illegal map. and you need to resave the file\n";
@@ -153,6 +164,7 @@ void StateMain::handle(Demo &game){
 		 		}
 }
 
+// the function is for print the map
 char printPos(int x){
 	if (x < 0) return '#';
 	else if (x == 0)
@@ -162,21 +174,24 @@ char printPos(int x){
 
 void StateEdit::handle(Demo &game){
 	system("clear");
+    // print info
 	string s1 = "Press 'x' to view your map\n";
 	string s2 = "Press 'w', 's', 'a', 'd' to up/down/left/right\n";
 	string s3 = "Press 'o' to and a obstacle\n";
 	string s4 = "Press number '1'-'9' to add pairs\n";
 	printText(s1 + s2 + s3 + s4, 51);
-
+    
+    // print the type of the current position
 	printf("|                                                       |\n");
 	printf("|     The current thing in the current position is      |\n");
 	printf("|                          [%c]                          |\n", printPos(game.board[game.nx][game.ny]));
-	game.filename = "";
+	game.filename = ""; // if the map is modified, the file must be resaved
 	printf("|  ");
 	for (int j = 1; j <= 51; ++j)
 		printf(" ");
 	printf("  |\n");
-	
+    
+	// print the map
 	for (int i = 1; i <= game.height; ++i){
 		printf("|  ");
 
@@ -207,19 +222,26 @@ void StateEdit::handle(Demo &game){
 	for (int i = 1; i <= 51 + 4; ++i)
 		printf("=");
 	printf("+\n");
-
+    
+    // operations
 	char op;
 	scanf(" %c", &op);
 	if (op == 'x'){
+        // return to the main page
 		game.state = new StateMain();
 	}
 	else{
+        // move
 		if (op == 'w' && game.nx >= 2) game.nx--;
 		if (op == 's' && game.nx < game.height) game.nx++;
 		if (op == 'a' && game.ny >= 2) game.ny--;
 		if (op == 'd' && game.ny < game.width) game.ny++;
+        
+        // add number
 		if (op >= '0' && op <= '9')
 			game.board[game.nx][game.ny] = op - '0';
+        
+        // add obstacle
 		if (op == 'o')
 			game.board[game.nx][game.ny] = -1;
 	}
@@ -227,11 +249,13 @@ void StateEdit::handle(Demo &game){
 
 void StateSave::handle(Demo &game){
 	system("clear");
+    // print info
 	string s1 = "Save the file\n";
 	if (game.error != "") s1 = game.error + s1, game.error = "";
 	printText(s1, 50);
 	printf("Enter the file name: \n");
-
+    
+    // save the map
 	cin >> game.filename;
 	string file = game.filename;
 
@@ -252,9 +276,11 @@ void StateSave::handle(Demo &game){
 
 void detailed_display(int n, int m, vector<vector<int> > board){
 	system("clear");
+    // print info
 	string s1 = "Detailed information\n";
 	printText(s1, 51);
-
+    
+    // print the map of each step
 	printf("|  ");
 	for (int j = 1; j <= 51; ++j)
 		printf(" ");
@@ -290,12 +316,14 @@ void detailed_display(int n, int m, vector<vector<int> > board){
 
 }
 void StateDisplay::handle(Demo &game){
+    // print info
 	message ans = game.ans;
 	system("clear");
 	string s1 = "Press 'x' to view your map\n";
 	string s2 = "Press number '1'-'9' to view detailed information\n";
 	printText(s1 + s2, 51);
-
+    
+    // print the overall results
 	printf("|  ");
 	for (int j = 1; j <= 51; ++j)
 		printf(" ");
@@ -328,13 +356,17 @@ void StateDisplay::handle(Demo &game){
 	for (int i = 1; i <= 51 + 4; ++i)
 		printf("=");
 	printf("+\n");
-
+    
+    // operations
 	char op;
 	scanf(" %c", &op);
 	if (op == 'x'){
+        // return to main page
 		game.state = new StateMain();
 	}
 	else{
+        // view the detailed information
+        // that how each droplet goes
 		if (op >= '0' && op <= '9'){
 			int num = op - '0';
 

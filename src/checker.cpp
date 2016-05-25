@@ -44,8 +44,10 @@ CheckerMessage AnswerChecker::legal_step_check(const std::vector<std::vector<int
         for (int i = 1; i < len; ++i){
             int dx = out.route[d][i].first - out.route[d][i - 1].first,
             dy = out.route[d][i].second - out.route[d][i - 1].second;
-            if (abs(dx) + abs(dy) != 1)
+            if (abs(dx) + abs(dy) != 1){
+                std::cout << d << " " << dx << " " << dy << std::endl;
                 return CheckerMessage(false, std::string("LegalError: connection error"));
+            }
         }
         
         // check the block
@@ -77,6 +79,7 @@ CheckerMessage AnswerChecker::cmp_check(const message &out, const message &ans){
             return CheckerMessage(false, std::string("CmpError: out don't have correct tot_pairs"));
         if (out.totlength() > ans.totlength())
             return CheckerMessage(false, std::string("CmpError: out don't have correct tot_length"));
+        else return CheckerMessage(true, std::string("OK"));
     }
     else{
         if (out.totpair() < ans.totpair())

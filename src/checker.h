@@ -32,6 +32,8 @@ public:
 	// we assume ans is a solution that is approximately best
 	// if out is worse than ans, out is not the best solution
 	CheckerMessage cmp_check(const message &out, const message &ans);
+    AnswerChecker() {}
+    ~AnswerChecker() {}
 };
 
 #endif //CHECKER_H_

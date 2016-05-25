@@ -1,9 +1,14 @@
-# all: editor
+edit: editor
+
+repo: report
 
 test: routing_test
 
 clean:
 	rm *.exe *.o
+
+report: report.o message.o routing.o routingalgo.o checker.o evaluate.o
+	g++ report.o message.o routing.o routingalgo.o checker.o evaluate.o -lz3 -o report
 
 editor: editor.o demo.o message.o routing.o routingalgo.o
 	g++ editor.o demo.o message.o routing.o routingalgo.o -lz3 -o editor
@@ -31,3 +36,9 @@ routing_test.o: routing_test.cpp routing.h routingalgo.h message.h checker.h
 
 checker.o: checker.cpp checker.h message.h
 	g++ -c checker.cpp -o checker.o
+
+evaluate.o: evaluate.cpp message.h checker.h routing.h routingalgo.h evaluate.h
+	g++ -c evaluate.cpp -o evaluate.o
+
+report.o: message.h checker.h routing.h routingalgo.h evaluate.h
+	g++ -c report.cpp -o report.o 
