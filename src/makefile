@@ -8,7 +8,7 @@ clean:
 	rm *.exe *.o
 
 report: report.o message.o routing.o routingalgo.o checker.o evaluate.o
-	g++ report.o message.o routing.o routingalgo.o checker.o evaluate.o -lz3 -o report
+	g++ --std=c++11 report.o message.o routing.o routingalgo.o checker.o evaluate.o -lz3 -o report
 
 editor: editor.o demo.o message.o routing.o routingalgo.o
 	g++ editor.o demo.o message.o routing.o routingalgo.o -lz3 -o editor
