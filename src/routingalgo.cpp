@@ -203,7 +203,7 @@ void RoutingSatAlgoFlow::FindPath(message &results,
                 // this is to check whether we select the pair
                 if (t){
                     results.push(i, x - fx[pk], y - fy[pk]);
-                    results.push(i, x, y);
+                    //results.push(i, x, y);
                 }
                 else break;
             }
@@ -279,6 +279,7 @@ void RoutingSatAlgoFlowPrune::PruneTerms(const expr_vector &method,
     }
     for (int i = 1; i <= n; ++i){
         for (int j = 1; j <= m; ++j){
+            if (block[i][j]) continue;
             // forbid
             // | .
             // + -
@@ -442,6 +443,7 @@ void RoutingSatAlgoPointPrune::PruneTerms(const expr_vector &method,
     }
     for (int i = 1; i <= n; ++i){
         for (int j = 1; j <= m; ++j){
+            if (block[i][j]) continue;
             // forbid
             // x .
             // ? x
@@ -521,5 +523,73 @@ message RoutingSatAlgoPointPrune::SolveSat(int n_, int m_, int D_, std::vector<s
     PruneTerms(method, sat_solver, block);
 
     std::cout << "RoutingSatAlgoPointPrune::SolveSat() INFO: starting solving model" << std::endl;
+    return GetAns(total_pairs, total_length, method, sat_solver, block, start_point, end_point, aug);
+}
+
+
+void RoutingSatAlgoPointPrunePlus::MorePruneTerms(const expr_vector &method, 
+                                          optimize &sat_solver, 
+                                          std::vector<std::vector<int> > block){
+    // more prune
+    for (int i = 1; i <= n; ++i){
+        for (int j = 1; j <= m; ++j){
+            if (block[i][j]) continue;
+            // forbid
+            // x
+            // .
+            // x
+            if (block[i + 1][j]) continue;
+            if (block[i - 1][j]) continue;
+            expr t_sum = zero;
+            expr t_or = sat_context.bool_val(false);
+            for (int d = 1; d <= D; ++d){
+                t_sum = t_sum + BoolToInt(method[getindx(d, i, j)]);
+                t_or = t_or || (method[getindx(d, i + 1, j)] && method[getindx(d, i - 1, j)]);
+            }
+            sat_solver.add((t_sum > 0) || !t_or);
+        }
+    }
+    for (int i = 1; i <= n; ++i){
+        for (int j = 1; j <= m; ++j){
+            if (block[i][j]) continue;
+            // forbid
+            // x . x
+            if (block[i][j - 1]) continue;
+            if (block[i][j + 1]) continue;
+            expr t_sum = zero;
+            expr t_or = sat_context.bool_val(false);
+            for (int d = 1; d <= D; ++d){
+                t_sum = t_sum + BoolToInt(method[getindx(d, i, j)]);
+                t_or = t_or || (method[getindx(d, i, j + 1)] && method[getindx(d, i, j - 1)]);
+            }
+            sat_solver.add((t_sum > 0) || !t_or);
+        }
+    }
+
+}
+
+message RoutingSatAlgoPointPrunePlus::SolveSat(int n_, int m_, int D_, std::vector<std::vector<int> > block, int aug){
+    n = n_, m = m_, D = D_;
+    std::vector<std::pair<int, int> > start_point, end_point;
+    GetStartEndPoints(start_point, end_point, block);
+
+    std::cout << ("RoutingSatAlgoPointPrunePlus::SolveSat() INFO: starting defining variables") << std::endl;
+    expr_vector method(sat_context);
+    AddSatTerms(method);
+
+    std::cout << "RoutingSatAlgoPointPrunePlus::SolveSat() INFO: starting establishing model" << std::endl;
+    optimize sat_solver(sat_context);
+    params sat_para(sat_context);
+    sat_para.set("priority",sat_context.str_symbol("pareto"));
+    sat_solver.set(sat_para);
+    expr total_length = zero;
+    expr total_pairs = zero;
+    EstablishModels(total_pairs, total_length, method, sat_solver, block, start_point, end_point, aug);
+
+    std::cout << "RoutingSatAlgoPointPrunePlus::SolveSat() INFO: starting adding prune terms" << std::endl;
+    PruneTerms(method, sat_solver, block);
+    MorePruneTerms(method, sat_solver, block);
+
+    std::cout << "RoutingSatAlgoPointPrunePlus::SolveSat() INFO: starting solving model" << std::endl;
     return GetAns(total_pairs, total_length, method, sat_solver, block, start_point, end_point, aug);
 }
