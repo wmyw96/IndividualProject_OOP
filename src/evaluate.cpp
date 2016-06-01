@@ -79,6 +79,8 @@ void Evaluation::Execute(int id){
 		steady_clock::time_point clock_end_a = steady_clock::now();
 		duration<double> time_span_a = duration_cast<duration<double> >(clock_end_a - clock_begin_a);
 		rec_a.push_back((double)time_span_a.count());
+		std::cout << "Evaluation::Execute() INFO: Time span of algorithm a: "
+				  <<  (double)time_span_a.count() << "s" << std::endl;
 
     	// get ans_b
     	steady_clock::time_point clock_begin_b = steady_clock::now();
@@ -86,6 +88,8 @@ void Evaluation::Execute(int id){
 		steady_clock::time_point clock_end_b = steady_clock::now();
 		duration<double> time_span_b = duration_cast<duration<double> >(clock_end_b - clock_begin_b);
 		rec_b.push_back((double)time_span_b.count());
+		std::cout << "Evaluation::Execute() INFO: Time span of algorithm b: "
+				  <<  (double)time_span_b.count() << "s" << std::endl;
 
 		// get map
 		std::vector<std::vector<int> > block = solver_a.getBlock(filename);

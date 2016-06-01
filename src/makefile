@@ -40,5 +40,5 @@ checker.o: checker.cpp checker.h message.h
 evaluate.o: evaluate.cpp message.h checker.h routing.h routingalgo.h evaluate.h
 	g++ -c evaluate.cpp -o evaluate.o
 
-report.o: message.h checker.h routing.h routingalgo.h evaluate.h
+report.o: report.cpp message.h checker.h routing.h routingalgo.h evaluate.h
 	g++ -c report.cpp -o report.o 
