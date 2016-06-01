@@ -5,6 +5,7 @@
 #include <ratio>
 #include <ctime>
 #include <chrono>
+#include <cstdlib>
 
 void RandomDataGenerator::generate(int seed, int n, int m, int d, double obstacle_rate, const std::string& filename){
 	srand(seed);
