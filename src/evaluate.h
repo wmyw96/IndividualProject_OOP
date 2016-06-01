@@ -36,7 +36,7 @@ public:
 		sum_ = max_time_ = square_sum_ = 0;
 		min_time_ = 1e9;
 	}
-    ~Time() {}
+	~Time() {}
 	void push_back(double rec_value){
 		rec_list_.push_back(rec_value);
 		tot_ ++;
@@ -47,12 +47,12 @@ public:
 			min_time_ = rec_value;
 		square_sum_ = square_sum_ + rec_value * rec_value;
 	}
-    double max_time() const{
-        return max_time_;
-    }
-    double min_time() const{
-        return min_time_;
-    }
+	double max_time() const{
+		return max_time_;
+	}
+	double min_time() const{
+		return min_time_;
+	}
 	double sum() const{
 		return sum_;
 	}

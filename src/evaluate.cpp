@@ -71,10 +71,10 @@ void Evaluation::Execute(int id){
 		char filename[] = "this_is_a_placeholder_this_is_a_placeholder_this_is_a_placeholder";
 		sprintf(filename, "test_%d_%d.in", id, i);
 		gen->generate(seed, n, m, d, obstacle_rate, std::string(filename));
-    	
-    	// get ans_a
-    	using namespace std::chrono;
-    	steady_clock::time_point clock_begin_a = steady_clock::now();
+		
+		// get ans_a
+		using namespace std::chrono;
+		steady_clock::time_point clock_begin_a = steady_clock::now();
 		message ans_a = solver_a.solver(filename);
 		steady_clock::time_point clock_end_a = steady_clock::now();
 		duration<double> time_span_a = duration_cast<duration<double> >(clock_end_a - clock_begin_a);
@@ -82,8 +82,8 @@ void Evaluation::Execute(int id){
 		std::cout << "Evaluation::Execute() INFO: Time span of algorithm a: "
 				  <<  (double)time_span_a.count() << "s" << std::endl;
 
-    	// get ans_b
-    	steady_clock::time_point clock_begin_b = steady_clock::now();
+		// get ans_b
+		steady_clock::time_point clock_begin_b = steady_clock::now();
 		message ans_b = solver_b.solver(filename);
 		steady_clock::time_point clock_end_b = steady_clock::now();
 		duration<double> time_span_b = duration_cast<duration<double> >(clock_end_b - clock_begin_b);

@@ -7,9 +7,9 @@
 class CheckerMessage{
 public:
 	// it is just a message that tansfer from one function to another
-    const std::string res;
+	const std::string res;
 	const bool ok;
-    CheckerMessage(bool ok, const std::string& str) : ok(ok), res(str) {}
+	CheckerMessage(bool ok, const std::string& str) : ok(ok), res(str) {}
 	~CheckerMessage() {}
 };
 
@@ -32,8 +32,8 @@ public:
 	// we assume ans is a solution that is approximately best
 	// if out is worse than ans, out is not the best solution
 	CheckerMessage cmp_check(const message &out, const message &ans);
-    AnswerChecker() {}
-    ~AnswerChecker() {}
+	AnswerChecker() {}
+	~AnswerChecker() {}
 };
 
 #endif //CHECKER_H_

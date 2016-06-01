@@ -23,15 +23,15 @@ public:
 		board = b.board;
 		route = b.route;
 	}
-    int d() const{
-        return d_;
-    }
-    int n() const{
-        return n_;
-    }
-    int m() const{
-        return m_;
-    }
+	int d() const{
+		return d_;
+	}
+	int n() const{
+		return n_;
+	}
+	int m() const{
+		return m_;
+	}
 	int ok() const{
 		return ok_;
 	}
@@ -51,14 +51,14 @@ public:
 		ok_ = v;
 	}
 	void push(int d, int x, int y){
-        route[d].push_back(std::make_pair(x, y));
-        totlength_ ++;
+		route[d].push_back(std::make_pair(x, y));
+		totlength_ ++;
 		board[x][y] = d;
 	}
 	void display() const;
-    message& operator = (const message &b){
-    	if (this == &b)
-    		return *this;
+	message& operator = (const message &b){
+		if (this == &b)
+			return *this;
 		n_ = b.n_;
 		m_ = b.m_;
 		d_ = b.d_;
