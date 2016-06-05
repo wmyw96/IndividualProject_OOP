@@ -1,3 +1,5 @@
+all: edit repo test
+
 edit: editor
 
 repo: report
@@ -13,14 +15,14 @@ report: report.o message.o routing.o routingalgo.o checker.o evaluate.o
 editor: editor.o demo.o message.o routing.o routingalgo.o
 	g++ editor.o demo.o message.o routing.o routingalgo.o -lz3 -o editor
 
+routing_test: routing_test.o message.o routing.o routingalgo.o checker.o
+	g++ routing_test.o message.o routing.o routingalgo.o checker.o -lz3 -o routing_test
+
 editor.o: editor.cpp demo.h routing.h routingalgo.h message.h
 	g++ -c editor.cpp -o editor.o
 
 demo.o: demo.h demo.cpp routing.h routingalgo.h message.h
 	g++ -c demo.cpp -o demo.o
-
-routing_test: routing_test.o message.o routing.o routingalgo.o checker.o
-	g++ routing_test.o message.o routing.o routingalgo.o checker.o -lz3 -o routing_test
 
 routing.o: routing.cpp routing.h routingalgo.h message.h
 	g++ -c routing.cpp -o routing.o
@@ -38,7 +40,7 @@ checker.o: checker.cpp checker.h message.h
 	g++ -c checker.cpp -o checker.o
 
 evaluate.o: evaluate.cpp message.h checker.h routing.h routingalgo.h evaluate.h
-	g++ -c evaluate.cpp -o evaluate.o
+	g++ --std=c++11 -c evaluate.cpp -o evaluate.o
 
 report.o: report.cpp message.h checker.h routing.h routingalgo.h evaluate.h
 	g++ -c report.cpp -o report.o 
