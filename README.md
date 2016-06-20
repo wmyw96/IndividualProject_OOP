@@ -28,3 +28,5 @@ The makefile file can generate three different executable files
 ## Details
 
 More details can be seen in the whitepaper in [doc/whitepaper.pdf](https://github.com/wmyw96/IndividualProject_OOP/blob/master/doc/whitepaper.pdf)
+
+the defense slide file can be seen in [doc/slide.pdf](https://github.com/wmyw96/IndividualProject_OOP/blob/master/doc/slide.pdf)
