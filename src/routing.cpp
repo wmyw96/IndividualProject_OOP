@@ -1,6 +1,8 @@
 #include "routing.h"
 #include <iostream>
 #include <fstream>
+#include <algorithm>
+#include <cmath>
 
 std::vector<std::string> RoutingSolver::load(const std::string& file){
 	std::ifstream in(file.c_str());
