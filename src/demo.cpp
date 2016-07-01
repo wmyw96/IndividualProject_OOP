@@ -181,9 +181,9 @@ void StateEdit::handle(Demo &game){
 	printText(s1 + s2 + s3 + s4, 51);
 	
 	// print the type of the current position
-	printf("|                                                     |\n");
-	printf("|    The current thing in the current position is     |\n");
-	printf("|                         [%c]                         |\n", printPos(game.board[game.nx][game.ny]));
+	printf("|                                                       |\n");
+	printf("|     The current thing in the current position is      |\n");
+	printf("|                          [%c]                          |\n", printPos(game.board[game.nx][game.ny]));
 	game.filename = ""; // if the map is modified, the file must be resaved
 	printf("|  ");
 	for (int j = 1; j <= 51; ++j)
